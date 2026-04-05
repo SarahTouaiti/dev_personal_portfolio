@@ -1,3 +1,7 @@
+import { Button } from "../components/Button";
+import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react";
+
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -25,7 +29,8 @@ export const Hero = () => {
               top: `${Math.random() * 100}%`,
               // eslint-disable-next-line react-hooks/purity
               animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
-              animationDelay: `{$Math.random()*5}s`,
+              // eslint-disable-next-line react-hooks/purity
+              animationDelay: `${Math.random() * 5}s`,
             }}
           />
         ))}
@@ -42,8 +47,63 @@ export const Hero = () => {
                 Software Engineer • React Specialist
               </span>
             </div>
+
+            {/* Headline */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
+                Crafting <span className="text-primary glow-text">digital</span>
+                <br />
+                experiences with{" "}
+                <span className="font-serif italic font-normal text-white">
+                  precision.
+                </span>
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
+                Hi, I'm Pedro Machado - a software engineer specializing in
+                React, Next.js, and Typescript. I build scalable, performant web
+                applications that users love.
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
+              <Button size="lg">
+                Contact Me <ArrowRight className="w-5 h-5" />
+              </Button>
+              <AnimatedBorderButton />
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
+              <span className="text-sm text-muted-foreground">Follow Me: </span>
+              {[
+                { icon: Github, href: "#" },
+                { icon: Linkedin, href: "#" },
+                { icon: Twitter, href: "#" },
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                >
+                  {<social.icon className="w-5 h-5" />}
+                </a>
+              ))}
+            </div>
           </div>
           {/* Right Column - Profile Image */}
+          <div className="relative animate-fade-in animation-delay-300">
+            {/* Profile Image */}
+            <div className="relative max-w-md mx-auto">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse" />
+              <div className="relative glass rounded-3xl p-2 glow-border">
+                <img
+                  src="/profile-photo.jpg"
+                  alt="Pedro Machado"
+                  className="w-full aspect-[4/5] object-cover rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
